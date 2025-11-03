@@ -1,38 +1,72 @@
-# sv
+# toon-encoder
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+JSON ↔ TOON format converter web UI and library wrapper.
 
-## Creating a project
+This repository contains a SvelteKit-based UI to encode and decode between JSON and the TOON format, plus small utilities (autosave, stats, token estimation) and a GitHub Actions workflow to build and deploy the site to GitHub Pages.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Features
 
-```sh
-# create a new project in the current directory
-npx sv create
+- JSON ↔ TOON conversion via `@toon-format/toon` (imports exposed at `$lib`)
+- Autosave to localStorage
+- Word / char / line / token estimate stats and compression comparison
+- Compact / Expand JSON, copy to clipboard
+- Per-panel font size controls and dark/light theme
+- GitHub Actions workflow to build and deploy to GitHub Pages
 
-# create a new project in my-app
-npx sv create my-app
+## Local development
+
+Requirements
+
+- Node.js 18+ (tested with Node 18)
+- npm or yarn
+
+Install dependencies
+
+```bash
+npm ci
 ```
 
-## Developing
+Start dev server
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
+```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+Open http://localhost:5173/ to view the UI.
 
-To create a production version of your app:
+## Build for production
 
-```sh
+```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+This project uses `@sveltejs/adapter-static` so the build output will be placed in `./build`.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Deploy to GitHub Pages (automatic)
+
+A GitHub Actions workflow is included at `.github/workflows/deploy.yml`. It builds the site on every push to `main` and deploys the static output to GitHub Pages using the supported `upload-pages-artifact` + `deploy-pages` actions.
+
+If you prefer the `gh-pages` branch approach instead, you can change the workflow to use a deployment action that pushes the `build/` directory to `gh-pages`.
+
+### Important: project pages vs user/organization pages
+
+If you want to host the site as a project page (https://<user>.github.io/<repo>), set `paths.base` in `svelte.config.js` so asset URLs are correct. Example:
+
+```js
+// svelte.config.js
+kit: {
+	paths: { base: '/toon-encoder' },
+	adapter: adapter({ pages: 'build', assets: 'build' })
+}
+```
+
+Deploying to a user/organization page (https://<user>.github.io) typically does not require changing `paths.base`.
+
+## Notes
+
+- Token count shown in the UI is an estimate (chars / 4). For exact token counts (OpenAI/tiktoken style) install and use a tokenizer library.
+- Persistence uses `localStorage` (per-browser). If you need cross-device persistence, consider adding an export/import feature or server-side storage.
+
+## License
+
+MIT
