@@ -1,0 +1,9 @@
+{
+  "name": "toon-encoder-api",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "dependencies": {
+    "@toon-format/toon": "^0.7.1"
+  }
+}

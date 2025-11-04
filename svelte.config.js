@@ -7,17 +7,15 @@ const config = {
 	// for more information about preprocessors
 	preprocess: vitePreprocess(),
 
-	kit: {
-		// Use the static adapter so `npm run build` produces a static `build/` directory
-		// which can be deployed to GitHub Pages. If you deploy to a project page
-		// (https://username.github.io/repo) you may need to set `paths.base`.
-		adapter: adapter({
-			pages: 'build',
-			assets: 'build',
-			fallback: null
-		}),
-		paths: { base: '' }
-	}
+    kit: {
+        // Static adapter for GitHub Pages
+        adapter: adapter({
+            pages: 'build',
+            assets: 'build',
+            fallback: null
+        }),
+        paths: { base: '' }
+    }
 };
 
 export default config;

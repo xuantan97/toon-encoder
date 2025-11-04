@@ -7,19 +7,36 @@
 		<!-- Default metadata for SEO and social sharing; pages can override via svelte head -->
 		<title>JSON = TOON Converter — compact data format</title>
 		<meta name="description" content="Convert between JSON and TOON format — compact, human-readable data encoding. Online UI with autosave, stats, and token estimates." />
-		<link rel="canonical" href="https://xuantan97.github.io/toon-encoder/" />
+		<link rel="canonical" href="https://toon.xuantan97.com/" />
 
 		<!-- Open Graph -->
 		<meta property="og:title" content="JSON = TOON Converter" />
 		<meta property="og:description" content="Convert between JSON and TOON format — compact, human-readable data encoding." />
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://xuantan97.github.io/toon-encoder/" />
+		<meta property="og:url" content="https://toon.xuantan97.com/" />
 		<meta property="og:image" content="/og-image.png" />
 
 		<!-- Twitter card -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content="JSON = TOON Converter" />
 		<meta name="twitter:description" content="Convert between JSON and TOON format — compact, human-readable data encoding." />
+
+		<!-- Structured data (JSON-LD) -->
+		<script type="application/ld+json">
+		{
+		  "@context": "https://schema.org",
+		  "@type": "WebSite",
+		  "name": "JSON = TOON Converter",
+		  "url": "https://toon.xuantan97.com/",
+		  "description": "Convert between JSON and TOON format — compact, human-readable data encoding.",
+		  "publisher": {
+		    "@type": "Person",
+		    "name": "toon-encoder",
+		    "url": "https://toon.xuantan97.com/"
+		  },
+		  "image": "/og-image.png"
+		}
+		</script>
 
 		%sveltekit.head%
 	</head>

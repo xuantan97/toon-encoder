@@ -1,0 +1,6 @@
+name = "toon-encoder-api"
+main = "src/worker.ts"
+compatibility_date = "2024-11-01"
+
+# Use workers.dev for testing; you can add `routes = ["your.domain/encode", "your.domain/decode"]` later
+workers_dev = true
