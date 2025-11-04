@@ -16,7 +16,7 @@ const config = {
 			assets: 'build',
 			fallback: null
 		}),
-		paths: { base: '/' }
+		paths: { base: '' }
 	}
 };
 
