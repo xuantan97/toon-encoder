@@ -150,6 +150,16 @@
             error = e instanceof Error ? e.message : 'Invalid JSON';
         }
     }
+
+    function clearJson() {
+        jsonInput = '';
+        error = '';
+    }
+
+    function clearToon() {
+        toonOutput = '';
+        error = '';
+    }
 </script>
 
 <div class="app" class:dark={isDarkMode}>
@@ -184,6 +194,7 @@
                 <h2>JSON</h2>
                 <div class="panel-actions">
                     <button class="small-btn" on:click={() => copyText(jsonInput)} aria-label="Copy JSON" title="Copy JSON to clipboard">Copy</button>
+                    <button class="small-btn" on:click={clearJson} aria-label="Clear JSON" title="Clear JSON input">Clear</button>
                     <button class="small-btn" on:click={() => increaseFont('json')} aria-label="Increase JSON text" title="Increase JSON text size">A+</button>
                     <button class="small-btn" on:click={() => decreaseFont('json')} aria-label="Decrease JSON text" title="Decrease JSON text size">A-</button>
                     <button class="small-btn" on:click={compactJson} aria-label="Compact JSON" title="Minify/compact JSON">Compact</button>
@@ -220,6 +231,7 @@
                 <h2>TOON</h2>
                 <div class="panel-actions">
                     <button class="small-btn" on:click={() => copyText(toonOutput)} aria-label="Copy TOON" title="Copy TOON text to clipboard">Copy</button>
+                    <button class="small-btn" on:click={clearToon} aria-label="Clear TOON" title="Clear TOON output">Clear</button>
                     <button class="small-btn" on:click={() => increaseFont('toon')} aria-label="Increase TOON text" title="Increase TOON text size">A+</button>
                     <button class="small-btn" on:click={() => decreaseFont('toon')} aria-label="Decrease TOON text" title="Decrease TOON text size">A-</button>
                 </div>
